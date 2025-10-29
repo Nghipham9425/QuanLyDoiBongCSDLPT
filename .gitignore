@@ -5,6 +5,9 @@ target/
 !**/src/test/**/target/
 *.class
 
+# GitHub copilot instructions (không push lên)
+.github/
+
 # Logs
 *.log
 
