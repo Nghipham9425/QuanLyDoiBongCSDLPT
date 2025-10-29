@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="25" style="-fx-background-color: #f5f7fa;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.football.controllers.TranDauController">
+    <padding>
+        <Insets bottom="20" left="25" right="25" top="20" />
+    </padding>
+    
+    <!-- HEADER -->
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <StackPane prefHeight="50" prefWidth="50" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #42a5f5 0%, #64b5f6 100%); -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(66,165,245,0.4), 10, 0.4, 0, 3);">
+            <Label style="-fx-font-size: 28px;" text="🏟" />
+        </StackPane>
+        
+        <VBox spacing="3">
+            <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #333;" text="QUẢN LÝ TRẬN ĐẤU" />
+            <Label style="-fx-font-size: 13px; -fx-text-fill: #999;" text="Tạo trận đấu và nhập kết quả thi đấu" />
+        </VBox>
+        
+        <Region HBox.hgrow="ALWAYS" />
+        
+        <StackPane onMouseClicked="#handleLamMoi" prefHeight="45" prefWidth="45" style="-fx-background-color: #80cbc4; -fx-background-radius: 22.5; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(128,203,196,0.4), 10, 0.4, 0, 3);">
+            <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="🔄" />
+        </StackPane>
+    </HBox>
+    
+    <!-- FORM SECTION -->
+    <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3);">
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📝 Tạo trận đấu mới" />
+        
+        <GridPane hgap="20" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+            </columnConstraints>
+            
+            <VBox spacing="8" GridPane.columnIndex="0">
+                <Label style="-fx-font-size: 13px; -fx-font-weight: 500; -fx-text-fill: #666;" text="Mã trận đấu *" />
+                <TextField fx:id="txtMaTD" promptText="VD: TD01" style="-fx-font-size: 13px; -fx-padding: 10;" />
+            </VBox>
+            
+            <VBox spacing="8" GridPane.columnIndex="1">
+                <Label style="-fx-font-size: 13px; -fx-font-weight: 500; -fx-text-fill: #666;" text="Đội 1 *" />
+                <ComboBox fx:id="cbMaDB1" prefWidth="1000" promptText="Chọn đội 1" style="-fx-font-size: 13px;" />
+            </VBox>
+            
+            <VBox spacing="8" GridPane.columnIndex="2">
+                <Label style="-fx-font-size: 13px; -fx-font-weight: 500; -fx-text-fill: #666;" text="Đội 2 *" />
+                <ComboBox fx:id="cbMaDB2" prefWidth="1000" promptText="Chọn đội 2" style="-fx-font-size: 13px;" />
+            </VBox>
+            
+            <VBox spacing="8" GridPane.columnIndex="3">
+                <Label style="-fx-font-size: 13px; -fx-font-weight: 500; -fx-text-fill: #666;" text="Trọng tài *" />
+                <TextField fx:id="txtTrongTai" promptText="Tên trọng tài" style="-fx-font-size: 13px; -fx-padding: 10;" />
+            </VBox>
+            
+            <VBox spacing="8" GridPane.columnIndex="4">
+                <Label style="-fx-font-size: 13px; -fx-font-weight: 500; -fx-text-fill: #666;" text="Sân đấu *" />
+                <ComboBox fx:id="cbSanDau" prefWidth="1000" promptText="Chọn sân" style="-fx-font-size: 13px;" />
+            </VBox>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+        
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 10 0 0 0;">
+            <Button fx:id="btnThem" minWidth="120" onAction="#handleThem" style="-fx-background-color: #42a5f5; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="➕ Tạo trận" />
+            <Button fx:id="btnSua" minWidth="120" onAction="#handleSua" style="-fx-background-color: #ffb74d; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="✏ Sửa" />
+            <Button fx:id="btnXoa" minWidth="120" onAction="#handleXoa" style="-fx-background-color: #e57373; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="🗑 Xóa" />
+            <Button fx:id="btnLamMoi" minWidth="120" onAction="#handleLamMoi" style="-fx-background-color: #80cbc4; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="🔄 Làm mới" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Label style="-fx-font-size: 12px; -fx-text-fill: #ff9800; -fx-font-style: italic;" text="💡 Tạo trận trước, sau đó click [📝 Nhập điểm] để nhập kết quả" />
+        </HBox>
+    </VBox>
+    
+    <!-- TABLE SECTION -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3);">
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📋 Danh sách trận đấu" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="🗄️ Hiển thị:" />
+            <RadioButton fx:id="rbAll" selected="true" style="-fx-font-size: 12px;" text="Tất cả">
+                <toggleGroup>
+                    <ToggleGroup fx:id="filterGroup" />
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbSD1" style="-fx-font-size: 12px;" text="SD1 (DB1)" toggleGroup="$filterGroup" />
+            <RadioButton fx:id="rbSD2" style="-fx-font-size: 12px;" text="SD2 (DB2)" toggleGroup="$filterGroup" />
+        </HBox>
+        
+        <TableView fx:id="tableTranDau" style="-fx-font-size: 13px;" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colMaTD" prefWidth="80" text="Mã trận" />
+                <TableColumn fx:id="colMaDB1" prefWidth="100" text="Đội 1" />
+                <TableColumn fx:id="colMaDB2" prefWidth="100" text="Đội 2" />
+                <TableColumn fx:id="colTyso" prefWidth="80" text="Tỷ số" />
+                <TableColumn fx:id="colTrongTai" prefWidth="150" text="Trọng tài" />
+                <TableColumn fx:id="colSanDau" prefWidth="80" text="Sân đấu" />
+                <TableColumn fx:id="colManh" prefWidth="80" text="Mảnh" />
+                <TableColumn fx:id="colAction" prefWidth="150" text="Hành động" />
+            </columns>
+        </TableView>
+        
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 0 0 0;">
+            <Label fx:id="lblTongSo" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="📊 Tổng: 0 trận" />
+            <Label style="-fx-text-fill: #ddd;" text="•" />
+            <Label fx:id="lblDB1" style="-fx-font-size: 13px; -fx-text-fill: #80cbc4;" text="SD1: 0 trận" />
+            <Label style="-fx-text-fill: #ddd;" text="•" />
+            <Label fx:id="lblDB2" style="-fx-font-size: 13px; -fx-text-fill: #81c784;" text="SD2: 0 trận" />
+        </HBox>
+    </VBox>
+    
+</VBox>

@@ -1,0 +1,214 @@
+/* DASHBOARD.CSS - Dashboard page styles */
+
+/* Font chung */
+* {
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  -fx-background-color: linear-gradient(
+    from 0% 0% to 100% 100%,
+    #ef5350 0%,
+    #e57373 50%,
+    #ff8a80 100%
+  );
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 2, 0);
+}
+
+/* Logo section */
+.logo-section {
+  -fx-padding: 20 0 20 0;
+}
+
+.logo-text {
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+}
+
+/* Menu section */
+.menu-section {
+  -fx-padding: 10 0;
+}
+
+/* Menu items */
+.sidebar-button {
+  -fx-background-color: transparent;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 15 20;
+  -fx-cursor: hand;
+  -fx-alignment: CENTER_LEFT;
+  -fx-background-radius: 8;
+  -fx-border-width: 0;
+}
+
+.sidebar-button:hover {
+  -fx-background-color: rgba(255, 255, 255, 0.15);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.3, 0, 2);
+}
+
+.sidebar-button:pressed,
+.sidebar-button.active {
+  -fx-background-color: rgba(255, 255, 255, 0.25);
+  -fx-border-color: transparent transparent transparent #80cbc4;
+  -fx-border-width: 0 0 0 4px;
+  -fx-font-weight: bold;
+}
+
+/* === MAIN AREA === */
+.main-area {
+  -fx-background-color: linear-gradient(
+    from 0% 0% to 0% 100%,
+    #fafafa 0%,
+    #f5f5f5 100%
+  );
+}
+
+.content-area {
+  -fx-background-color: transparent;
+}
+
+/* ScrollPane styling */
+.scroll-pane {
+  -fx-background-color: transparent;
+  -fx-background: transparent;
+}
+
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
+.scroll-pane > .scroll-bar:vertical {
+  -fx-background-color: transparent;
+  -fx-pref-width: 10px;
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb {
+  -fx-background-color: rgba(239, 83, 80, 0.3);
+  -fx-background-radius: 5px;
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb:hover {
+  -fx-background-color: rgba(239, 83, 80, 0.5);
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb:pressed {
+  -fx-background-color: rgba(239, 83, 80, 0.7);
+}
+
+.scroll-pane > .scroll-bar:vertical > .increment-button,
+.scroll-pane > .scroll-bar:vertical > .decrement-button {
+  -fx-background-color: transparent;
+  -fx-padding: 0;
+}
+
+.scroll-pane > .scroll-bar:horizontal {
+  -fx-background-color: transparent;
+}
+
+/* === STAT CARDS === */
+.stat-card {
+  -fx-background-color: white;
+  -fx-background-radius: 12;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.3, 0, 4);
+  -fx-padding: 20;
+}
+
+.stat-card:hover {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 16, 0.4, 0, 6);
+  -fx-translate-y: -2;
+}
+
+.stat-card.stat-blue {
+  -fx-border-color: #80cbc4;
+  -fx-border-width: 0 0 4 0;
+}
+
+.stat-card.stat-green {
+  -fx-border-color: #81c784;
+  -fx-border-width: 0 0 4 0;
+}
+
+.stat-card.stat-orange {
+  -fx-border-color: #ffb74d;
+  -fx-border-width: 0 0 4 0;
+}
+
+.stat-card.stat-purple {
+  -fx-border-color: #ba68c8;
+  -fx-border-width: 0 0 4 0;
+}
+
+.stat-label {
+  -fx-text-fill: #6b7280;
+  -fx-font-size: 13px;
+}
+
+.stat-value {
+  -fx-text-fill: #1f2937;
+  -fx-font-size: 28px;
+  -fx-font-weight: bold;
+}
+
+/* === INFO CARDS === */
+.card {
+  -fx-background-color: white;
+  -fx-background-radius: 12;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.3, 0, 4);
+  -fx-padding: 20;
+}
+
+.card:hover {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 16, 0.4, 0, 6);
+}
+
+.card-title {
+  -fx-text-fill: #1f2937;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+}
+
+.card-desc {
+  -fx-text-fill: #6b7280;
+  -fx-font-size: 14px;
+}
+
+/* === BUTTONS === */
+.action-btn {
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-padding: 12 20;
+  -fx-background-radius: 8;
+  -fx-cursor: hand;
+}
+
+.action-btn.primary {
+  -fx-background-color: linear-gradient(
+    from 0% 0% to 0% 100%,
+    #ef5350 0%,
+    #e53935 100%
+  );
+  -fx-text-fill: white;
+  -fx-effect: dropshadow(gaussian, rgba(239, 83, 80, 0.3), 4, 0, 0, 2);
+}
+
+.action-btn.primary:hover {
+  -fx-background-color: linear-gradient(
+    from 0% 0% to 0% 100%,
+    #e53935 0%,
+    #c62828 100%
+  );
+}
+
+.action-btn.secondary {
+  -fx-background-color: #f3f4f6;
+  -fx-text-fill: #374151;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1;
+}
+
+.action-btn.secondary:hover {
+  -fx-background-color: #e5e7eb;
+}

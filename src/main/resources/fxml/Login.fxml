@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.football.controllers.LoginController"
+            prefWidth="800" prefHeight="500"
+            stylesheets="@../styles/login.css">
+    
+    <HBox prefHeight="500" prefWidth="800" 
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        
+        <!-- Bên trái: Logo, tên app, gradient xanh, bo góc -->
+        <VBox alignment="CENTER" prefWidth="350" spacing="20" styleClass="login-left-pane">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+            
+            <StackPane prefWidth="150" prefHeight="150">
+                <Region style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%); 
+                             -fx-background-radius: 80; 
+                             -fx-effect: dropshadow(gaussian, rgba(255, 138, 128, 0.6), 30, 0.7, 0, 0);"
+                       prefWidth="160" prefHeight="160"/>
+                
+                <Region style="-fx-background-color: white; 
+                             -fx-background-radius: 75; 
+                             -fx-effect: innershadow(gaussian, rgba(0,0,0,0.08), 8, 0.3, 0, 2), 
+                                         dropshadow(gaussian, rgba(239, 83, 80, 0.3), 20, 0.6, 0, 8);"
+                       prefWidth="150" prefHeight="150"/>
+                
+                <!-- Icon bóng đá -->
+                <Label text="⚽" style="-fx-font-size: 75px; 
+                                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0.4, 0, 3);"/>
+            </StackPane>
+            
+            <!-- App Title -->
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="QUẢN LÝ ĐỘI BÓNG" styleClass="login-app-title"/>
+            </VBox>
+            
+            <!-- Slogan -->
+            <Label text="Hệ thống csdl phân tán" styleClass="login-app-slogan"/>
+            
+            <VBox alignment="CENTER" spacing="5" style="-fx-padding: 20 0 0 0;">
+                <Label text="SQL Server: 3 Instances" style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 12px;"/>
+            </VBox>
+        </VBox>
+        
+        <!-- Bên phải: Form đăng nhập, bo góc -->
+        <VBox alignment="CENTER" prefWidth="450" spacing="25" styleClass="login-right-pane">
+            <padding>
+                <Insets top="60" right="60" bottom="60" left="60"/>
+            </padding>
+            
+            <!-- Login Title -->
+            <Label text="Đăng nhập" styleClass="login-form-title"/>
+            
+            <!-- Username Field -->
+            <VBox spacing="8">
+                <Label text="Tên đăng nhập" styleClass="login-field-label"/>
+                <TextField fx:id="txtUsername" promptText="Nhập tên đăng nhập" 
+                          styleClass="login-input" prefWidth="300" prefHeight="40"/>
+            </VBox>
+            
+            <!-- Password Field -->
+            <VBox spacing="8">
+                <Label text="Mật khẩu" styleClass="login-field-label"/>
+                <PasswordField fx:id="txtPassword" promptText="Nhập mật khẩu" 
+                              styleClass="login-input" prefWidth="300" prefHeight="40"/>
+            </VBox>
+            
+            <!-- Error Message -->
+            <Label fx:id="lblError" text="" styleClass="login-error-label" 
+                   managed="false" visible="false" wrapText="true" maxWidth="300"/>
+            
+            <!-- Login Button -->
+            <Button fx:id="btnLogin" text="ĐĂNG NHẬP" styleClass="login-button" 
+                    onAction="#handleLogin" prefWidth="300" prefHeight="45"/>
+            
+            <ProgressIndicator fx:id="progressLogin" maxHeight="40" maxWidth="40" 
+                              visible="false" managed="false"/>
+            
+            <!-- Footer Info -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-padding: 20 0 0 0;">
+                <Label text="Tài khoản mặc định:" style="-fx-text-fill: #999; -fx-font-size: 11px;"/>
+                <Label text="admin / admin" style="-fx-text-fill: #666; -fx-font-size: 10px; -fx-font-family: monospace;"/>
+            </VBox>
+        </VBox>
+        
+    </HBox>
+    
+</AnchorPane>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="25" style="-fx-background-color: #f5f7fa;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.football.controllers.DashboardController">
+    
+    <padding>
+        <Insets top="20" right="25" bottom="20" left="25" />
+    </padding>
+    
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <StackPane prefHeight="50" prefWidth="50" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ef5350 0%, #ff8a80 100%); -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 10, 0.4, 0, 3);">
+            <Label style="-fx-font-size: 28px;" text="📊" />
+        </StackPane>
+        
+        <VBox spacing="3">
+            <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #333;" text="TỔNG QUAN HỆ THỐNG" />
+            <Label style="-fx-font-size: 13px; -fx-text-fill: #999;" text="Thống kê và phân tích dữ liệu phân tán" />
+        </VBox>
+        
+        <Region HBox.hgrow="ALWAYS" />
+        
+        <StackPane prefHeight="45" prefWidth="45" style="-fx-background-color: #ef5350; -fx-background-radius: 22.5; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 10, 0.4, 0, 3);">
+            <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="🔄" />
+        </StackPane>
+    </HBox>
+    
+    <GridPane hgap="20" vgap="20">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25" />
+            <ColumnConstraints percentWidth="25" />
+            <ColumnConstraints percentWidth="25" />
+            <ColumnConstraints percentWidth="25" />
+        </columnConstraints>
+        
+        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3); -fx-border-color: transparent transparent #ef5350 transparent; -fx-border-width: 0 0 4 0;" styleClass="stat-card" GridPane.columnIndex="0">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: #ef5350; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.3), 8, 0.4, 0, 2);">
+                    <Label style="-fx-font-size: 28px; -fx-text-fill: white;" text="👥" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label style="-fx-font-size: 13px; -fx-text-fill: #999; -fx-font-weight: 500;" text="Đội bóng" />
+                    <Label fx:id="lblDoiBong" maxWidth="Infinity" minWidth="80" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #ef5350;" text="24" />
+                </VBox>
+            </HBox>
+            <Label style="-fx-font-size: 11px; -fx-text-fill: #bbb;" text="Tổng số đội thi đấu" />
+        </VBox>
+        
+        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3); -fx-border-color: transparent transparent #80cbc4 transparent; -fx-border-width: 0 0 4 0;" styleClass="stat-card" GridPane.columnIndex="1">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: #80cbc4; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(128,203,196,0.3), 8, 0.4, 0, 2);">
+                    <Label style="-fx-font-size: 28px; -fx-text-fill: white;" text="⚽" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label style="-fx-font-size: 13px; -fx-text-fill: #999; -fx-font-weight: 500;" text="Cầu thủ" />
+                    <Label fx:id="lblCauThu" maxWidth="Infinity" minWidth="80" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #80cbc4;" text="158" />
+                </VBox>
+            </HBox>
+            <Label style="-fx-font-size: 11px; -fx-text-fill: #bbb;" text="Tổng số cầu thủ đăng ký" />
+        </VBox>
+        
+        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3); -fx-border-color: transparent transparent #81c784 transparent; -fx-border-width: 0 0 4 0;" styleClass="stat-card" GridPane.columnIndex="2">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: #81c784; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(129,199,132,0.3), 8, 0.4, 0, 2);">
+                    <Label style="-fx-font-size: 28px; -fx-text-fill: white;" text="🏟" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label style="-fx-font-size: 13px; -fx-text-fill: #999; -fx-font-weight: 500;" text="Trận đấu" />
+                    <Label fx:id="lblTranDau" maxWidth="Infinity" minWidth="80" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #81c784;" text="36" />
+                </VBox>
+            </HBox>
+            <Label style="-fx-font-size: 11px; -fx-text-fill: #bbb;" text="Số trận đã tổ chức" />
+        </VBox>
+        
+        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3); -fx-border-color: transparent transparent #ffb74d transparent; -fx-border-width: 0 0 4 0;" styleClass="stat-card" GridPane.columnIndex="3">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: #ffb74d; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(255,183,77,0.3), 8, 0.4, 0, 2);">
+                    <Label style="-fx-font-size: 28px; -fx-text-fill: white;" text="🎯" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label style="-fx-font-size: 13px; -fx-text-fill: #999; -fx-font-weight: 500;" text="Bàn thắng" />
+                    <Label fx:id="lblBanThang" maxWidth="Infinity" minWidth="80" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #ffb74d;" text="245" />
+                </VBox>
+            </HBox>
+            <Label style="-fx-font-size: 11px; -fx-text-fill: #bbb;" text="Tổng bàn thắng đã ghi" />
+        </VBox>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+    
+    <VBox spacing="15">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label style="-fx-font-size: 18px;" text="📊" />
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Phân bổ dữ liệu phân tán" />
+        </HBox>
+        
+        <HBox spacing="20">
+            <VBox spacing="18" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3);" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #80cbc4 0%, #4db6ac 100%); -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(128,203,196,0.4), 10, 0.4, 0, 3);">
+                        <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;" text="1" />
+                    </StackPane>
+                    <VBox spacing="3">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;" text="DATABASE 1" />
+                        <Label style="-fx-font-size: 11px; -fx-text-fill: #80cbc4; -fx-font-family: 'Consolas', monospace; -fx-font-weight: bold;" text="localhost\NGH1" />
+                    </VBox>
+                </HBox>
+                
+                <VBox fx:id="lblDB1Stats" spacing="12" style="-fx-padding: 10 0 0 0;">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 16px;" text="👥" />
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="12 đội bóng (CLB1)" />
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 16px;" text="⚽" />
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="79 cầu thủ" />
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 16px;" text="🏟️" />
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="18 trận đấu (SD1)" />
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <VBox spacing="18" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3);" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #81c784 0%, #66bb6a 100%); -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(129,199,132,0.4), 10, 0.4, 0, 3);">
+                        <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;" text="2" />
+                    </StackPane>
+                    <VBox spacing="3">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;" text="DATABASE 2" />
+                        <Label style="-fx-font-size: 11px; -fx-text-fill: #81c784; -fx-font-family: 'Consolas', monospace; -fx-font-weight: bold;" text="localhost\NGH2" />
+                    </VBox>
+                </HBox>
+                
+                <VBox fx:id="lblDB2Stats" spacing="12" style="-fx-padding: 10 0 0 0;">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 16px;" text="👥" />
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="12 đội bóng (CLB2)" />
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 16px;" text="⚽" />
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="79 cầu thủ" />
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 16px;" text="🏟️" />
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="18 trận đấu (SD2)" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </HBox>
+    </VBox>
+    
+    <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3);">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label style="-fx-font-size: 18px;" text="🏆" />
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="VUA PHÁ LƯỚI" />
+        </HBox>
+        
+        <VBox spacing="12">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane prefHeight="35" prefWidth="35" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffd700 0%, #ffed4e 100%); -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(255,215,0,0.4), 8, 0.4, 0, 2);">
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="1" />
+                </StackPane>
+                <Label style="-fx-font-size: 14px; -fx-font-weight: 500; -fx-text-fill: #333;" text="Nguyễn Văn A" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #ffd700;" text="15 bàn" />
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane prefHeight="35" prefWidth="35" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #c0c0c0 0%, #d3d3d3 100%); -fx-background-radius: 8;">
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="2" />
+                </StackPane>
+                <Label style="-fx-font-size: 14px; -fx-font-weight: 500; -fx-text-fill: #333;" text="Trần Văn B" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #c0c0c0;" text="12 bàn" />
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane prefHeight="35" prefWidth="35" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #cd7f32 0%, #e8a87c 100%); -fx-background-radius: 8;">
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="3" />
+                </StackPane>
+                <Label style="-fx-font-size: 14px; -fx-font-weight: 500; -fx-text-fill: #333;" text="Lê Văn C" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #cd7f32;" text="10 bàn" />
+            </HBox>
+        </VBox>
+    </VBox>
+    
+</VBox>

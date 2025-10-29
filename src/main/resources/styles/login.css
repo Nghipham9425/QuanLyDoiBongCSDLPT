@@ -1,0 +1,102 @@
+/* LOGIN.CSS - Login page styles */
+
+/* Font chung */
+* {
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Left pane - gradient đỏ coral nhẹ, bo góc trái */
+.login-left-pane {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ef5350 0%, #ff8a80 100%);
+    -fx-background-radius: 30 0 0 30;
+    -fx-alignment: center;
+}
+
+.login-app-title {
+  -fx-text-fill: white;
+  -fx-font-size: 25px;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+.login-app-slogan {
+  -fx-text-fill: #ffebee;
+  -fx-font-size: 18px;
+}
+
+/* Right pane - trắng, bo góc phải, shadow nhẹ */
+.login-right-pane {
+  -fx-background-color: #fff;
+  -fx-background-radius: 0 30 30 0;
+  -fx-effect: dropshadow(gaussian, #ef535044, 16, 0.15, 0, 2);
+  -fx-alignment: center;
+}
+
+.login-form-title {
+  -fx-text-fill: #222;
+  -fx-font-size: 22px;
+  -fx-font-weight: bold;
+}
+
+.login-field-label {
+  -fx-text-fill: #555;
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+}
+
+/* Input fields - line gradient coral nhẹ, không viền */
+.login-input {
+  -fx-background-color: transparent;
+  -fx-border-width: 0 0 3 0;
+  -fx-border-color: transparent transparent
+    linear-gradient(to right, #ef5350, #ff8a80) transparent;
+  -fx-font-size: 16px;
+  -fx-padding: 8 0 8 0;
+  -fx-text-fill: #222;
+  -fx-prompt-text-fill: #b0b0b0;
+  -fx-background-insets: 0;
+  -fx-background-radius: 0;
+}
+
+.login-input:focused {
+  -fx-border-color: transparent transparent
+    linear-gradient(to right, #ff8a80, #ef5350) transparent;
+  -fx-border-width: 0 0 3 0;
+  -fx-effect: dropshadow(gaussian, #ef535044, 8, 0.2, 0, 2);
+}
+
+/* Login button - gradient coral nhẹ, bo góc */
+.login-button {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #ef5350 0%, #ff8a80 100%);
+    -fx-background-radius: 10;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #ef535044, 8, 0.2, 0, 2);
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+}
+
+.login-button:hover {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #ff8a80 0%, #ef5350 100%);
+    -fx-effect: dropshadow(gaussian, #ff8a80aa, 12, 0.3, 0, 4);
+}
+
+.login-button:pressed {
+    -fx-background-color: #e53935;
+    -fx-text-fill: white;
+}/* Progress indicator */
+.login-loading .progress-indicator {
+  -fx-progress-color: #ef5350;
+}
+
+/* Error label */
+.login-error-label {
+  -fx-text-fill: #e74c3c;
+  -fx-font-size: 13px;
+  -fx-padding: 8 12 8 12;
+  -fx-background-color: #ffebee;
+  -fx-background-radius: 5px;
+}
