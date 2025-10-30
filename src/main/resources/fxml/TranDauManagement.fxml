@@ -17,32 +17,32 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="25" style="-fx-background-color: #f5f7fa;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.football.controllers.TranDauController">
+<VBox minHeight="800" spacing="25" styleClass="page-container" stylesheets="@../styles/common.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.football.controllers.TranDauController">
     <padding>
         <Insets bottom="20" left="25" right="25" top="20" />
     </padding>
     
     <!-- HEADER -->
     <HBox alignment="CENTER_LEFT" spacing="15">
-        <StackPane prefHeight="50" prefWidth="50" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #42a5f5 0%, #64b5f6 100%); -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(66,165,245,0.4), 10, 0.4, 0, 3);">
+        <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 28; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.5), 15, 0.5, 0, 4);">
             <Label style="-fx-font-size: 28px;" text="🏟" />
         </StackPane>
         
         <VBox spacing="3">
-            <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #333;" text="QUẢN LÝ TRẬN ĐẤU" />
+            <Label styleClass="page-title" text="QUẢN LÝ TRẬN ĐẤU" />
             <Label style="-fx-font-size: 13px; -fx-text-fill: #999;" text="Tạo trận đấu và nhập kết quả thi đấu" />
         </VBox>
         
         <Region HBox.hgrow="ALWAYS" />
         
-        <StackPane onMouseClicked="#handleLamMoi" prefHeight="45" prefWidth="45" style="-fx-background-color: #80cbc4; -fx-background-radius: 22.5; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(128,203,196,0.4), 10, 0.4, 0, 3);">
+        <StackPane onMouseClicked="#handleLamMoi" prefHeight="45" prefWidth="45" styleClass="icon-button-info">
             <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="🔄" />
         </StackPane>
     </HBox>
     
     <!-- FORM SECTION -->
-    <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3);">
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📝 Tạo trận đấu mới" />
+    <VBox spacing="20" styleClass="card">
+        <Label styleClass="section-title" text="📝 Tạo trận đấu mới" />
         
         <GridPane hgap="20" vgap="15">
             <columnConstraints>
@@ -83,21 +83,21 @@
         </GridPane>
         
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 10 0 0 0;">
-            <Button fx:id="btnThem" minWidth="120" onAction="#handleThem" style="-fx-background-color: #42a5f5; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="➕ Tạo trận" />
-            <Button fx:id="btnSua" minWidth="120" onAction="#handleSua" style="-fx-background-color: #ffb74d; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="✏ Sửa" />
-            <Button fx:id="btnXoa" minWidth="120" onAction="#handleXoa" style="-fx-background-color: #e57373; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="🗑 Xóa" />
-            <Button fx:id="btnLamMoi" minWidth="120" onAction="#handleLamMoi" style="-fx-background-color: #80cbc4; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;" text="🔄 Làm mới" />
+            <Button fx:id="btnThem" minWidth="120" onAction="#handleThem" styleClass="btn-success" text="➕ Tạo trận" />
+            <Button fx:id="btnSua" minWidth="120" onAction="#handleSua" styleClass="btn-warning" text="✏ Sửa" />
+            <Button fx:id="btnXoa" minWidth="120" onAction="#handleXoa" styleClass="btn-danger" text="🗑 Xóa" />
+            <Button fx:id="btnLamMoi" minWidth="120" onAction="#handleLamMoi" styleClass="btn-info" text="🔄 Làm mới" />
             
             <Region HBox.hgrow="ALWAYS" />
             
-            <Label style="-fx-font-size: 12px; -fx-text-fill: #ff9800; -fx-font-style: italic;" text="💡 Tạo trận trước, sau đó click [📝 Nhập điểm] để nhập kết quả" />
+            <Label styleClass="label-warning" style="-fx-font-size: 12px; -fx-font-style: italic;" text="💡 Tạo trận trước, sau đó click [📝 Nhập điểm] để nhập kết quả" />
         </HBox>
     </VBox>
     
     <!-- TABLE SECTION -->
-    <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 3);">
+    <VBox spacing="15" styleClass="card" VBox.vgrow="ALWAYS">
         <HBox alignment="CENTER_LEFT" spacing="20">
-            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📋 Danh sách trận đấu" />
+            <Label styleClass="section-title" text="📋 Danh sách trận đấu" />
             
             <Region HBox.hgrow="ALWAYS" />
             
@@ -111,7 +111,7 @@
             <RadioButton fx:id="rbSD2" style="-fx-font-size: 12px;" text="SD2 (DB2)" toggleGroup="$filterGroup" />
         </HBox>
         
-        <TableView fx:id="tableTranDau" style="-fx-font-size: 13px;" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tableTranDau" prefHeight="600" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="colMaTD" prefWidth="80" text="Mã trận" />
                 <TableColumn fx:id="colMaDB1" prefWidth="100" text="Đội 1" />

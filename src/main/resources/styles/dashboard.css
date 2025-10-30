@@ -1,19 +1,19 @@
-/* DASHBOARD.CSS - Dashboard page styles */
+/* DASHBOARD.CSS - Dashboard page styles với tone đỏ coral */
 
 /* Font chung */
 * {
-  -fx-font-family: "Segoe UI", Arial, sans-serif;
+  -fx-font-family: "Segoe UI", "Roboto", Arial, sans-serif;
 }
 
-/* === SIDEBAR === */
+/* === SIDEBAR - Gradient đỏ coral === */
 .sidebar {
   -fx-background-color: linear-gradient(
-    from 0% 0% to 100% 100%,
+    to bottom,
     #ef5350 0%,
     #e57373 50%,
     #ff8a80 100%
   );
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 2, 0);
+  -fx-effect: dropshadow(gaussian, rgba(239, 83, 80, 0.3), 12, 0.4, 2, 0);
 }
 
 /* Logo section */
@@ -25,6 +25,7 @@
   -fx-text-fill: white;
   -fx-font-size: 16px;
   -fx-font-weight: bold;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.3, 0, 2);
 }
 
 /* Menu section */
@@ -32,7 +33,7 @@
   -fx-padding: 10 0;
 }
 
-/* Menu items */
+/* Menu items - Hiệu ứng hover mượt */
 .sidebar-button {
   -fx-background-color: transparent;
   -fx-text-fill: white;
@@ -40,27 +41,31 @@
   -fx-padding: 15 20;
   -fx-cursor: hand;
   -fx-alignment: CENTER_LEFT;
-  -fx-background-radius: 8;
+  -fx-background-radius: 10;
   -fx-border-width: 0;
+  -fx-transition: all 0.3s ease;
 }
 
 .sidebar-button:hover {
-  -fx-background-color: rgba(255, 255, 255, 0.15);
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.3, 0, 2);
+  -fx-background-color: rgba(255, 255, 255, 0.2);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0.4, 0, 3);
+  -fx-scale-x: 1.02;
+  -fx-scale-y: 1.02;
 }
 
 .sidebar-button:pressed,
 .sidebar-button.active {
-  -fx-background-color: rgba(255, 255, 255, 0.25);
-  -fx-border-color: transparent transparent transparent #80cbc4;
+  -fx-background-color: rgba(255, 255, 255, 0.3);
+  -fx-border-color: transparent transparent transparent white;
   -fx-border-width: 0 0 0 4px;
   -fx-font-weight: bold;
+  -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.4), 10, 0.5, 0, 0);
 }
 
 /* === MAIN AREA === */
 .main-area {
   -fx-background-color: linear-gradient(
-    from 0% 0% to 0% 100%,
+    to bottom,
     #fafafa 0%,
     #f5f5f5 100%
   );
@@ -70,7 +75,7 @@
   -fx-background-color: transparent;
 }
 
-/* ScrollPane styling */
+/* ScrollPane styling - Màu đỏ coral */
 .scroll-pane {
   -fx-background-color: transparent;
   -fx-background: transparent;
@@ -88,6 +93,7 @@
 .scroll-pane > .scroll-bar:vertical > .thumb {
   -fx-background-color: rgba(239, 83, 80, 0.3);
   -fx-background-radius: 5px;
+  -fx-transition: all 0.2s ease;
 }
 
 .scroll-pane > .scroll-bar:vertical > .thumb:hover {
@@ -108,17 +114,23 @@
   -fx-background-color: transparent;
 }
 
-/* === STAT CARDS === */
+/* === STAT CARDS - Màu đỏ coral chủ đạo === */
 .stat-card {
   -fx-background-color: white;
   -fx-background-radius: 12;
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.3, 0, 4);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 12, 0.3, 0, 4);
   -fx-padding: 20;
+  -fx-transition: all 0.3s ease;
 }
 
 .stat-card:hover {
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 16, 0.4, 0, 6);
-  -fx-translate-y: -2;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 18, 0.4, 0, 6);
+  -fx-translate-y: -4px;
+}
+
+.stat-card.stat-red {
+  -fx-border-color: #ef5350;
+  -fx-border-width: 0 0 4 0;
 }
 
 .stat-card.stat-blue {
@@ -144,11 +156,12 @@
 .stat-label {
   -fx-text-fill: #6b7280;
   -fx-font-size: 13px;
+  -fx-font-weight: 500;
 }
 
 .stat-value {
   -fx-text-fill: #1f2937;
-  -fx-font-size: 28px;
+  -fx-font-size: 32px;
   -fx-font-weight: bold;
 }
 
@@ -156,12 +169,14 @@
 .card {
   -fx-background-color: white;
   -fx-background-radius: 12;
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.3, 0, 4);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 12, 0.3, 0, 4);
   -fx-padding: 20;
+  -fx-transition: all 0.3s ease;
 }
 
 .card:hover {
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 16, 0.4, 0, 6);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 18, 0.4, 0, 6);
+  -fx-translate-y: -2px;
 }
 
 .card-title {
@@ -175,31 +190,40 @@
   -fx-font-size: 14px;
 }
 
-/* === BUTTONS === */
+/* === BUTTONS - Đỏ coral gradient === */
 .action-btn {
   -fx-font-size: 14px;
   -fx-font-weight: bold;
   -fx-padding: 12 20;
   -fx-background-radius: 8;
   -fx-cursor: hand;
+  -fx-transition: all 0.3s ease;
 }
 
 .action-btn.primary {
   -fx-background-color: linear-gradient(
-    from 0% 0% to 0% 100%,
+    to bottom,
     #ef5350 0%,
     #e53935 100%
   );
   -fx-text-fill: white;
-  -fx-effect: dropshadow(gaussian, rgba(239, 83, 80, 0.3), 4, 0, 0, 2);
+  -fx-effect: dropshadow(gaussian, rgba(239, 83, 80, 0.4), 8, 0.4, 0, 3);
 }
 
 .action-btn.primary:hover {
   -fx-background-color: linear-gradient(
-    from 0% 0% to 0% 100%,
+    to bottom,
     #e53935 0%,
     #c62828 100%
   );
+  -fx-effect: dropshadow(gaussian, rgba(239, 83, 80, 0.6), 12, 0.5, 0, 5);
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+}
+
+.action-btn.primary:pressed {
+  -fx-background-color: #c62828;
+  -fx-translate-y: 1px;
 }
 
 .action-btn.secondary {
@@ -211,4 +235,6 @@
 
 .action-btn.secondary:hover {
   -fx-background-color: #e5e7eb;
+  -fx-scale-x: 1.03;
+  -fx-scale-y: 1.03;
 }

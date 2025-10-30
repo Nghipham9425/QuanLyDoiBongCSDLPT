@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="25" style="-fx-background-color: #f5f7fa;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.football.controllers.DashboardController">
+<VBox spacing="25" styleClass="page-container" stylesheets="@../styles/common.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.football.controllers.DashboardController">
     
     <padding>
         <Insets top="20" right="25" bottom="20" left="25" />
