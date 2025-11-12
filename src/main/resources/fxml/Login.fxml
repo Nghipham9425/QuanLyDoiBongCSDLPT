@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" 
             xmlns:fx="http://javafx.com/fxml/1"
@@ -59,6 +60,12 @@
             
             <!-- Login Title -->
             <Label text="Đăng nhập" styleClass="login-form-title"/>
+            
+            <!-- CLB Selection -->
+            <VBox spacing="8">
+                <Label text="Chọn nơi" styleClass="login-field-label"/>
+                <ComboBox fx:id="cbCLB" styleClass="login-input" prefWidth="300" prefHeight="40" promptText="Chọn chi nhánh"/>
+            </VBox>
             
             <!-- Username Field -->
             <VBox spacing="8">

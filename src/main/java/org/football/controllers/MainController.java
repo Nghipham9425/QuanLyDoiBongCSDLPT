@@ -4,10 +4,14 @@ import javafx.geometry.Pos;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -34,7 +38,30 @@ public class MainController {
     
     @FXML
     private void handleLogout() {
-        System.out.println("Logout clicked");
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Xác nhận đăng xuất");
+        confirm.setHeaderText("⚠️ Bạn muốn đăng xuất?");
+        confirm.setContentText("Bạn sẽ quay lại màn hình đăng nhập.");
+        
+        if (confirm.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+            try {
+                // Đóng window hiện tại
+                Stage currentStage = (Stage) contentArea.getScene().getWindow();
+                currentStage.close();
+                
+                // Mở lại Login window
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+                Stage loginStage = new Stage();
+                loginStage.setTitle("Đăng nhập - Hệ thống Quản lý Đội bóng");
+                loginStage.setScene(new Scene(loader.load(), 800, 500));
+                loginStage.setResizable(false);
+                loginStage.centerOnScreen();
+                loginStage.show();
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
     
     private void loadPage(String fxmlFile, HBox activeButton) {
@@ -43,7 +70,7 @@ public class MainController {
             setContent(page);
             updateActiveButton(activeButton);
         } catch (IOException e) {
-            showError("❌ Lỗi: Không thể tải trang " + fxmlFile);
+            showError("Lỗi: Không thể tải trang " + fxmlFile);
             e.printStackTrace();
         }
     }
@@ -59,11 +86,6 @@ public class MainController {
         currentActiveButton = newButton;
     }
     
-    private void showComingSoon(String featureName, HBox activeButton) {
-        VBox placeholder = createPlaceholder(featureName);
-        setContent(placeholder);
-        updateActiveButton(activeButton);
-    }
     
     private VBox createPlaceholder(String featureName) {
         VBox box = new VBox(20);
@@ -81,8 +103,7 @@ public class MainController {
         
         box.getChildren().addAll(icon, title, subtitle);
         return box;
-    }
-    
+    } 
     private void setContent(Parent content) {
         contentArea.setContent(content);
     }
@@ -95,5 +116,9 @@ public class MainController {
     
     public void setUserInfo(String username) {
         lblUserInfo.setText(username);
+    }
+    
+    public void setUserInfo(String username, String clb) {
+        lblUserInfo.setText(username + " - " + clb);
     }
 }

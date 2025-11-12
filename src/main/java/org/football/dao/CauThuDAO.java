@@ -85,6 +85,16 @@ public class CauThuDAO {
         return result;
     }
     
+    // Tìm cầu thủ theo CLB (cho query)
+    public List<CauThu> findByCLB(String clb, Connection conn) throws SQLException {
+        String sql = "SELECT CT.* " +
+                    "FROM CauThu CT " +
+                    "JOIN DoiBong DB ON CT.MaDB = DB.MaDB " +
+                    "WHERE DB.CLB = ?";
+        
+        return queryList(conn, sql, clb);
+    }
+    
     // Cập nhật cầu thủ (có thể di chuyển giữa 2 mảnh)
     public boolean update(CauThu cauthu, String oldCLB, String newCLB) throws SQLException {
         if (!oldCLB.equals(newCLB)) {

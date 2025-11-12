@@ -101,8 +101,11 @@
             
             <Region HBox.hgrow="ALWAYS" />
             
+            <TextField fx:id="txtTimKiem" prefWidth="200" promptText="🔍 Tìm theo trọng tài..." style="-fx-font-size: 12px;" />
+            <Button onAction="#handleTimKiem" styleClass="btn-info" text="🔍 Tìm" />
+            
             <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="🗄️ Hiển thị:" />
-            <RadioButton fx:id="rbAll" selected="true" style="-fx-font-size: 12px;" text="Tất cả">
+            <RadioButton fx:id="rbAll" style="-fx-font-size: 12px;" text="Tất cả">
                 <toggleGroup>
                     <ToggleGroup fx:id="filterGroup" />
                 </toggleGroup>
@@ -114,22 +117,21 @@
         <TableView fx:id="tableTranDau" prefHeight="600" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="colMaTD" prefWidth="80" text="Mã trận" />
-                <TableColumn fx:id="colMaDB1" prefWidth="100" text="Đội 1" />
-                <TableColumn fx:id="colMaDB2" prefWidth="100" text="Đội 2" />
-                <TableColumn fx:id="colTyso" prefWidth="80" text="Tỷ số" />
-                <TableColumn fx:id="colTrongTai" prefWidth="150" text="Trọng tài" />
+                <TableColumn fx:id="colMaDB1" prefWidth="120" text="Đội 1" />
+                <TableColumn fx:id="colMaDB2" prefWidth="120" text="Đội 2" />
+                <TableColumn fx:id="colTyso" prefWidth="70" text="Tỷ số" />
+                <TableColumn fx:id="colTrongTai" prefWidth="140" text="Trọng tài" />
                 <TableColumn fx:id="colSanDau" prefWidth="80" text="Sân đấu" />
-                <TableColumn fx:id="colManh" prefWidth="80" text="Mảnh" />
-                <TableColumn fx:id="colAction" prefWidth="150" text="Hành động" />
+                <TableColumn fx:id="colAction" prefWidth="130" text="Hành động" />
             </columns>
         </TableView>
         
         <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 0 0 0;">
-            <Label fx:id="lblTongSo" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="📊 Tổng: 0 trận" />
+            <Label fx:id="lblTotal" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="📊 Tổng: 0 trận" />
             <Label style="-fx-text-fill: #ddd;" text="•" />
-            <Label fx:id="lblDB1" style="-fx-font-size: 13px; -fx-text-fill: #80cbc4;" text="SD1: 0 trận" />
+            <Label fx:id="lblSD1" style="-fx-font-size: 13px; -fx-text-fill: #80cbc4;" text="SD1: 0 trận" />
             <Label style="-fx-text-fill: #ddd;" text="•" />
-            <Label fx:id="lblDB2" style="-fx-font-size: 13px; -fx-text-fill: #81c784;" text="SD2: 0 trận" />
+            <Label fx:id="lblSD2" style="-fx-font-size: 13px; -fx-text-fill: #81c784;" text="SD2: 0 trận" />
         </HBox>
     </VBox>
     

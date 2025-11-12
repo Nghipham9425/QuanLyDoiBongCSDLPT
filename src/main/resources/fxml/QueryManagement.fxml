@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -52,7 +53,14 @@
                     <Button styleClass="btn-primary" onAction="#handleQuery1" text="🔍 Tìm" />
                 </HBox>
                 <Separator styleClass="separator-primary" />
-                <TableView fx:id="tableQ1" prefHeight="200" />
+                <TableView fx:id="tableQ1" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colMaCT_Q1" text="Mã CT" prefWidth="100" />
+                        <TableColumn fx:id="colHoTen_Q1" text="Họ Tên" prefWidth="200" />
+                        <TableColumn fx:id="colViTri_Q1" text="Vị Trí" prefWidth="150" />
+                        <TableColumn fx:id="colMaDB_Q1" text="Mã Đội" prefWidth="100" />
+                    </columns>
+                </TableView>
             </VBox>
             
             <!-- Query 2 -->
@@ -69,8 +77,8 @@
                 </HBox>
                 <Separator styleClass="separator-primary" />
                 <VBox alignment="CENTER" spacing="10" style="-fx-padding: 30 0; -fx-background-color: #ffebee; -fx-background-radius: 10;">
-                    <Label fx:id="lblResult_Q2" style="-fx-font-size: 52px; -fx-font-weight: bold; -fx-text-fill: #ef5350;" text="0" />
-                    <Label styleClass="label-primary" style="-fx-font-size: 14px;" text="trận đấu" />
+                    <Label fx:id="lblNumber_Q2" style="-fx-font-size: 52px; -fx-font-weight: bold; -fx-text-fill: #ef5350;" text="0" />
+                    <Label fx:id="lblResult_Q2" styleClass="label-primary" style="-fx-font-size: 14px;" text="trận đấu" />
                 </VBox>
             </VBox>
             
@@ -88,8 +96,8 @@
                 </HBox>
                 <Separator styleClass="separator-primary" />
                 <VBox alignment="CENTER" spacing="10" style="-fx-padding: 30 0; -fx-background-color: #ffebee; -fx-background-radius: 10;">
-                    <Label fx:id="lblResult_Q3" style="-fx-font-size: 52px; -fx-font-weight: bold; -fx-text-fill: #ef5350;" text="0" />
-                    <Label styleClass="label-primary" style="-fx-font-size: 14px;" text="trận hòa" />
+                    <Label fx:id="lblNumber_Q3" style="-fx-font-size: 52px; -fx-font-weight: bold; -fx-text-fill: #ef5350;" text="0" />
+                    <Label fx:id="lblResult_Q3" styleClass="label-primary" style="-fx-font-size: 14px;" text="trận hòa" />
                 </VBox>
             </VBox>
             
@@ -103,7 +111,14 @@
                 </HBox>
                 <Button styleClass="btn-primary" onAction="#handleQuery4" text="👑 Tìm vua phá lưới" />
                 <Separator styleClass="separator-primary" />
-                <TableView fx:id="tableQ4" prefHeight="200" />
+                <TableView fx:id="tableQ4" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colMaCT_Q4" text="Mã CT" prefWidth="100" />
+                        <TableColumn fx:id="colHoTen_Q4" text="Họ Tên" prefWidth="180" />
+                        <TableColumn fx:id="colViTri_Q4" text="Vị Trí" prefWidth="130" />
+                        <TableColumn fx:id="colTongBan_Q4" text="Tổng Bàn" prefWidth="100" />
+                    </columns>
+                </TableView>
             </VBox>
             
             <!-- Query 5 -->
@@ -120,7 +135,15 @@
                 </VBox>
                 <Button styleClass="btn-primary" onAction="#handleQuery5" text="🔍 Tìm trận" />
                 <Separator styleClass="separator-primary" />
-                <TableView fx:id="tableQ5" prefHeight="180" />
+                <TableView fx:id="tableQ5" prefHeight="180">
+                    <columns>
+                        <TableColumn fx:id="colMaTD_Q5" text="Mã TD" prefWidth="100" />
+                        <TableColumn fx:id="colMaDB1_Q5" text="Đội 1" prefWidth="100" />
+                        <TableColumn fx:id="colMaDB2_Q5" text="Đội 2" prefWidth="100" />
+                        <TableColumn fx:id="colTrongTai_Q5" text="Trọng Tài" prefWidth="150" />
+                        <TableColumn fx:id="colSanDau_Q5" text="Sân" prefWidth="80" />
+                    </columns>
+                </TableView>
             </VBox>
             
             <!-- Query 6 -->
@@ -153,7 +176,14 @@
                 </HBox>
                 <Button styleClass="btn-primary" onAction="#handleQuery7" text="Tìm CT không ghi bàn" />
                 <Separator styleClass="separator-primary" />
-                <TableView fx:id="tableQ7" prefHeight="200" />
+                <TableView fx:id="tableQ7" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colMaCT_Q7" text="Mã CT" prefWidth="100" />
+                        <TableColumn fx:id="colHoTen_Q7" text="Họ Tên" prefWidth="180" />
+                        <TableColumn fx:id="colViTri_Q7" text="Vị Trí" prefWidth="130" />
+                        <TableColumn fx:id="colSoTran_Q7" text="Số Trận" prefWidth="100" />
+                    </columns>
+                </TableView>
             </VBox>
             
             <!-- Query 8 -->
@@ -166,7 +196,14 @@
                 </HBox>
                 <Button styleClass="btn-primary" onAction="#handleQuery8" text="⭐ Tìm CT tích cực" />
                 <Separator styleClass="separator-primary" />
-                <TableView fx:id="tableQ8" prefHeight="200" />
+                <TableView fx:id="tableQ8" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colMaCT_Q8" text="Mã CT" prefWidth="100" />
+                        <TableColumn fx:id="colHoTen_Q8" text="Họ Tên" prefWidth="180" />
+                        <TableColumn fx:id="colViTri_Q8" text="Vị Trí" prefWidth="130" />
+                        <TableColumn fx:id="colSoTran_Q8" text="Số Trận" prefWidth="100" />
+                    </columns>
+                </TableView>
             </VBox>
             
             <!-- Query 9 -->
@@ -183,8 +220,8 @@
                 </HBox>
                 <Separator styleClass="separator-primary" />
                 <VBox alignment="CENTER" spacing="10" style="-fx-padding: 30 0; -fx-background-color: #ffebee; -fx-background-radius: 10;">
-                    <Label fx:id="lblResult_Q9" style="-fx-font-size: 52px; -fx-font-weight: bold; -fx-text-fill: #ef5350;" text="0" />
-                    <Label styleClass="label-primary" style="-fx-font-size: 14px;" text="bàn thắng" />
+                    <Label fx:id="lblNumber_Q9" style="-fx-font-size: 52px; -fx-font-weight: bold; -fx-text-fill: #ef5350;" text="0" />
+                    <Label fx:id="lblResult_Q9" styleClass="label-primary" style="-fx-font-size: 14px;" text="bàn thắng" />
                 </VBox>
             </VBox>
             
@@ -198,7 +235,14 @@
                 </HBox>
                 <Button styleClass="btn-primary" onAction="#handleQuery10" text="Tìm CT chưa ra sân" />
                 <Separator styleClass="separator-primary" />
-                <TableView fx:id="tableQ10" prefHeight="200" />
+                <TableView fx:id="tableQ10" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colMaCT_Q10" text="Mã CT" prefWidth="100" />
+                        <TableColumn fx:id="colHoTen_Q10" text="Họ Tên" prefWidth="200" />
+                        <TableColumn fx:id="colViTri_Q10" text="Vị Trí" prefWidth="150" />
+                        <TableColumn fx:id="colMaDB_Q10" text="Mã Đội" prefWidth="100" />
+                    </columns>
+                </TableView>
             </VBox>
          <rowConstraints>
             <RowConstraints />

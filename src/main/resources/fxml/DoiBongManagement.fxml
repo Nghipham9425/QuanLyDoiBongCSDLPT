@@ -91,7 +91,7 @@
             <Region HBox.hgrow="ALWAYS" />
             
             <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="️ Hiển thị:" />
-            <RadioButton fx:id="rbAll" selected="true" style="-fx-font-size: 12px;" text="Tất cả">
+            <RadioButton fx:id="rbAll" style="-fx-font-size: 12px;" text="Tất cả">
                 <toggleGroup>
                     <ToggleGroup fx:id="filterGroup" />
                 </toggleGroup>

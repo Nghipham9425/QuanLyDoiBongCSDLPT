@@ -118,15 +118,15 @@
                 <VBox fx:id="lblDB1Stats" spacing="12" style="-fx-padding: 10 0 0 0;">
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label style="-fx-font-size: 16px;" text="👥" />
-                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="12 đội bóng (CLB1)" />
+                        <Label fx:id="lblDB1Teams" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="0 đội" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label style="-fx-font-size: 16px;" text="⚽" />
-                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="79 cầu thủ" />
+                        <Label fx:id="lblDB1Players" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="0 cầu thủ" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label style="-fx-font-size: 16px;" text="🏟️" />
-                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="18 trận đấu (SD1)" />
+                        <Label fx:id="lblDB1Matches" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="0 trận (SD1)" />
                     </HBox>
                 </VBox>
             </VBox>
@@ -145,15 +145,15 @@
                 <VBox fx:id="lblDB2Stats" spacing="12" style="-fx-padding: 10 0 0 0;">
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label style="-fx-font-size: 16px;" text="👥" />
-                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="12 đội bóng (CLB2)" />
+                        <Label fx:id="lblDB2Teams" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="0 đội" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label style="-fx-font-size: 16px;" text="⚽" />
-                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="79 cầu thủ" />
+                        <Label fx:id="lblDB2Players" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="0 cầu thủ" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label style="-fx-font-size: 16px;" text="🏟️" />
-                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="18 trận đấu (SD2)" />
+                        <Label fx:id="lblDB2Matches" style="-fx-font-size: 13px; -fx-text-fill: #666;" text="0 trận (SD2)" />
                     </HBox>
                 </VBox>
             </VBox>
@@ -166,7 +166,7 @@
             <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="VUA PHÁ LƯỚI" />
         </HBox>
         
-        <VBox spacing="12">
+        <VBox fx:id="topScorerContainer" spacing="12">
             <HBox alignment="CENTER_LEFT" spacing="15">
                 <StackPane prefHeight="35" prefWidth="35" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffd700 0%, #ffed4e 100%); -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(255,215,0,0.4), 8, 0.4, 0, 2);">
                     <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="1" />

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.football.controllers.DiemSoDialogController"
+      spacing="20" style="-fx-background-color: #fafafa;"
+      prefWidth="700" prefHeight="600"
+      stylesheets="@../styles/common.css">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- HEADER -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="📝 NHẬP ĐIỂM TRẬN ĐẤU" 
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ef5350;"/>
+        
+        <Label fx:id="lblMatchInfo" text="DB01 vs DB02"
+               style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+        
+        <Label fx:id="lblStadiumRef" text="Sân: SD1 | Trọng tài: Michael Oliver"
+               style="-fx-font-size: 12px; -fx-text-fill: #666;"/>
+        
+        <Label text="💡 Tick ☑ cầu thủ tham gia, nhập số bàn thắng. Click [Lưu] để cập nhật bảng ThamGia"
+               style="-fx-font-size: 11px; -fx-text-fill: #ff9800; -fx-font-style: italic;"/>
+    </VBox>
+    
+    <!-- PLAYER LISTS SCROLL -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox fx:id="vboxPlayerLists" spacing="20">
+            <padding>
+                <Insets top="10" right="0" bottom="10" left="0"/>
+            </padding>
+            
+            <!-- Team 1 Box - Will be populated dynamically -->
+            <VBox fx:id="vboxTeam1" spacing="10" 
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+                <Label fx:id="lblTeam1" text="⚽ Đội 1: DB01"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #ef5350;"/>
+                
+                <!-- Header Row -->
+                <HBox spacing="10" style="-fx-border-color: #ddd; -fx-border-width: 0 0 2 0; -fx-padding: 0 0 8 0;">
+                    <Label text="Cầu thủ" prefWidth="250"
+                           style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                    <Label text="Số bàn" prefWidth="80"
+                           style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                    <Label text="Trạng thái" prefWidth="100"
+                           style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                </HBox>
+                
+                <!-- Player rows will be added here dynamically -->
+                <VBox fx:id="vboxTeam1Players" spacing="8"/>
+            </VBox>
+            
+            <!-- Team 2 Box - Will be populated dynamically -->
+            <VBox fx:id="vboxTeam2" spacing="10"
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+                <Label fx:id="lblTeam2" text="⚽ Đội 2: DB02"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #ef5350;"/>
+                
+                <!-- Header Row -->
+                <HBox spacing="10" style="-fx-border-color: #ddd; -fx-border-width: 0 0 2 0; -fx-padding: 0 0 8 0;">
+                    <Label text="Cầu thủ" prefWidth="250"
+                           style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                    <Label text="Số bàn" prefWidth="80"
+                           style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                    <Label text="Trạng thái" prefWidth="100"
+                           style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                </HBox>
+                
+                <!-- Player rows will be added here dynamically -->
+                <VBox fx:id="vboxTeam2Players" spacing="8"/>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+    
+    <!-- FOOTER - Score and Buttons -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+        <Label fx:id="lblTyso" text="📊 Tỷ số: 0 - 0" alignment="CENTER" maxWidth="Infinity"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ef5350;"/>
+        
+        <HBox spacing="15" alignment="CENTER">
+            <Button fx:id="btnLuu" text="💾 Lưu vào bảng ThamGia" onAction="#handleLuu"
+                    style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-size: 14px; 
+                           -fx-padding: 12 30; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;"/>
+            
+            <Button fx:id="btnDong" text="❌ Đóng" onAction="#handleDong"
+                    style="-fx-background-color: #999; -fx-text-fill: white; -fx-font-size: 14px; 
+                           -fx-padding: 12 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        </HBox>
+    </VBox>
+    
+</VBox>

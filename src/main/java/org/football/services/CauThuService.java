@@ -1,5 +1,6 @@
 package org.football.services;
 import org.football.dao.CauThuDAO;
+import org.football.dao.DoiBongDAO;
 import org.football.models.CauThu;
 import org.football.utils.DatabaseConnection;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class CauThuService {
     private CauThuDAO dao = new CauThuDAO();
+    private DoiBongDAO doiBongDAO = new DoiBongDAO();
 
     // Thêm cầu thủ mới (CLB truyền từ Controller)
     public void insert(CauThu cauthu, String clb) throws SQLException {
@@ -95,6 +97,11 @@ public class CauThuService {
         if (cauthu.getMaDB() == null || cauthu.getMaDB().trim().isEmpty()) {
             throw new SQLException("❌ Mã đội bóng không được rỗng!");
         }
+        
+        // Check đội bóng có tồn tại không (FK constraint)
+        if (doiBongDAO.findById(cauthu.getMaDB()) == null) {
+            throw new SQLException("❌ Đội bóng '" + cauthu.getMaDB() + "' không tồn tại!");
+        }
     }
     
     // Lấy tất cả (merge 2 DB)
@@ -118,5 +125,10 @@ public class CauThuService {
     // Tìm theo mã
     public CauThu findById(String maCT) throws SQLException {
         return dao.findById(maCT);
+    }
+    
+    // Tìm cầu thủ theo mã đội (for DiemSoDialog)
+    public List<CauThu> findByMaDB(String maDB) throws SQLException {
+        return dao.findByMaDB(maDB);
     }
 }

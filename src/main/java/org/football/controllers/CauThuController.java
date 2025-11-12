@@ -9,6 +9,8 @@ import org.football.models.CauThu;
 import org.football.models.DoiBong;
 import org.football.services.CauThuService;
 import org.football.services.DoiBongService;
+import org.football.services.ThamGiaService;
+import org.football.utils.AlertUtils;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -37,18 +39,42 @@ public class CauThuController {
         // Vị trí
         cbViTri.getItems().addAll("Thủ môn", "Hậu vệ", "Tiền vệ", "Tiền đạo");
         
-        // Load đội bóng từ cả 2 DB
-        loadDoiBong();
+        // Lấy CLB từ LoginController
+        String selectedCLB = LoginController.getSelectedCLB();
+        boolean isClb1 = selectedCLB.contains("CLB1");
+        
+        // Load đội bóng chỉ từ branch hiện tại
+        loadDoiBong(isClb1);
+        
+        // Toán tử 3 ngôi: hiển thị/ẩn RadioButton tương ứng
+        rbAll.setVisible(true);
+        rbAll.setManaged(true);
+        rbCLB1.setVisible(isClb1);
+        rbCLB1.setManaged(isClb1);
+        rbCLB2.setVisible(!isClb1);
+        rbCLB2.setManaged(!isClb1);
+        
+        // Mặc định chọn chi nhánh hiện tại
+        if (isClb1) {
+            rbCLB1.setSelected(true);
+        } else {
+            rbCLB2.setSelected(true);
+        }
         
         setupTable();
         setupListeners();
         loadData();
     }
     
-    // Load ComboBox đội bóng với DoiBong object
-    private void loadDoiBong() {
+    // Load ComboBox đội bóng với DoiBong object - chỉ branch hiện tại
+    private void loadDoiBong(boolean isClb1) {
         try {
-            List<DoiBong> doiBongList = doiBongService.findAll();
+            List<DoiBong> doiBongList;
+            if (isClb1) {
+                doiBongList = doiBongService.findByDB(1);  // DB1 = CLB1
+            } else {
+                doiBongList = doiBongService.findByDB(2);  // DB2 = CLB2
+            }
             cbDoiBong.setItems(FXCollections.observableArrayList(doiBongList));
             
             cbDoiBong.setConverter(new StringConverter<DoiBong>() {
@@ -65,7 +91,7 @@ public class CauThuController {
             });
             
         } catch (SQLException e) {
-            showAlert("Error", " Lỗi load đội bóng: " + e.getMessage());
+            AlertUtils.showError("Lỗi load đội bóng: " + e.getMessage());
         }
     }
     
@@ -130,7 +156,7 @@ public class CauThuController {
             updateStatistics();
             
         } catch (Exception e) {
-            showAlert("Error", " Lỗi load dữ liệu: " + e.getMessage());
+            AlertUtils.showError("Lỗi load dữ liệu: " + e.getMessage());
         }
     }
     
@@ -164,13 +190,12 @@ public class CauThuController {
             // Service sẽ validate hết
             cauThuService.insert(ct, selectedDoiBong.getClb());
             
-            showAlert("Success", " Thêm cầu thủ thành công!");
+            AlertUtils.showInfo("✅ Thêm cầu thủ thành công!");
             clearFrom();
-            rbAll.setSelected(true);
             loadData();
             
         } catch (Exception e) {
-            showAlert("Error", e.getMessage());
+            AlertUtils.showError(e.getMessage());
         }
     }
     
@@ -179,7 +204,7 @@ public class CauThuController {
         try {
             CauThu selected = tableCauThu.getSelectionModel().getSelectedItem();
             if (selected == null) {
-                showAlert("Error", "Chọn cầu thủ cần sửa!");
+                AlertUtils.showError("❌ Chọn cầu thủ cần sửa!");
                 return;
             }
             
@@ -198,12 +223,12 @@ public class CauThuController {
             // Service sẽ validate hết
             cauThuService.update(updated, oldCLB, newCLB);
             
-            showAlert("Success", " Cập nhật thành công!");
+            AlertUtils.showInfo("✅ Cập nhật thành công!");
             clearFrom();
             loadData();
             
         } catch (Exception e) {
-            showAlert("Error", e.getMessage());
+            AlertUtils.showError(e.getMessage());
         }
     }
     
@@ -212,17 +237,23 @@ public class CauThuController {
         try {
             CauThu selected = tableCauThu.getSelectionModel().getSelectedItem();
             if (selected == null) {
-                showAlert("Error", " Chọn cầu thủ cần xóa!");
+                AlertUtils.showError("❌ Chọn cầu thủ cần xóa!");
+                return;
+            }
+            
+            // Kiểm tra xem cầu thủ có tham gia trận đấu nào không
+            ThamGiaService thamGiaService = new ThamGiaService();
+            int matchCount = thamGiaService.countMatchesByPlayer(selected.getMaCT());
+            
+            if (matchCount > 0) {
+                AlertUtils.showError("❌ Không thể xóa cầu thủ!\n\n" +
+                    "Cầu thủ " + selected.getHoTen() + " đã tham gia " + matchCount + " trận đấu.\n" +
+                    "Vui lòng xóa dữ liệu tham gia trận đấu trước.");
                 return;
             }
             
             // Confirm trước khi xóa
-            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
-            confirm.setTitle("Xác nhận");
-            confirm.setHeaderText("Xác nhận xóa cầu thủ?");
-            confirm.setContentText("Bạn có chắc muốn xóa: " + selected.getHoTen() + "?");
-            
-            if (confirm.showAndWait().get() != ButtonType.OK) {
+            if (!AlertUtils.confirmDelete("cầu thủ " + selected.getHoTen())) {
                 return;
             }
             
@@ -230,12 +261,12 @@ public class CauThuController {
             
             cauThuService.delete(selected.getMaCT(), clb);
             
-            showAlert("Success", " Xóa thành công!");
+            AlertUtils.showInfo("✅ Xóa thành công!");
             clearFrom();
             loadData();
             
         } catch (Exception e) {
-            showAlert("Error", e.getMessage());
+            AlertUtils.showError(e.getMessage());
         }
     }
     
@@ -253,18 +284,7 @@ public class CauThuController {
         txtTimKiem.clear();
         tableCauThu.getSelectionModel().clearSelection();
         selectedDoiBongForEdit = null;
-        rbAll.setSelected(true);
         loadData();
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(
-            title.equals("Success") ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR
-        );
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private void clearFrom() {
