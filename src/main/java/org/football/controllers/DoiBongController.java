@@ -62,12 +62,8 @@ public class DoiBongController {
         rbCLB2.setVisible(!isClb1);
         rbCLB2.setManaged(!isClb1);
         
-        // Mặc định chọn chi nhánh hiện tại
-        if (isClb1) {
-            rbCLB1.setSelected(true);
-        } else {
-            rbCLB2.setSelected(true);
-        }
+        // Mặc định chọn "Tất cả"
+        rbAll.setSelected(true);
         
         setupTable();
         setupListeners();

@@ -13,9 +13,11 @@
 <BorderPane prefHeight="700" prefWidth="1200" stylesheets="@../styles/dashboard.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.football.controllers.MainController">
     
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #ef5350 0%, #ff8a80 100%); -fx-padding: 18 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);">
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #ef5350 0%, #ff8a80 100%); 
+        -fx-padding: 18 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);">
             <HBox alignment="CENTER_LEFT" spacing="12">
-                <StackPane prefHeight="42" prefWidth="42" style="-fx-background-color: rgba(255,255,255,0.25); -fx-background-radius: 21; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.3, 0, 2);">
+                <StackPane prefHeight="42" prefWidth="42" style="-fx-background-color: rgba(255,255,255,0.25); -fx-background-radius: 21; 
+        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.3, 0, 2);">
                     <Label style="-fx-font-size: 22px;" text="⚽" />
                 </StackPane>
                 <VBox spacing="2">
@@ -33,7 +35,9 @@
                 <Label fx:id="lblUserInfo" style="-fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold;" text="Admin" />
             </HBox>
             
-            <Button fx:id="btnLogout" onAction="#handleLogout" style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 10 20; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-color: rgba(255,255,255,0.3); -fx-border-width: 1; -fx-border-radius: 20;" text="Đăng xuất" />
+            <Button fx:id="btnLogout" onAction="#handleLogout" style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; 
+            -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 10 20; -fx-font-size: 12px; -fx-font-weight: bold; 
+            -fx-border-color: rgba(255,255,255,0.3); -fx-border-width: 1; -fx-border-radius: 20;" text="Đăng xuất" />
         </HBox>
     </top>
     
@@ -45,7 +49,8 @@
                     <Label style="-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 0 10;" text="MENU CHÍNH" />
                 </VBox>
                 
-                <HBox fx:id="btnDashboard" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" styleClass="sidebar-button">
+                <HBox fx:id="btnDashboard" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" 
+                      styleClass="sidebar-button">
                     <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 8;">
                         <Label style="-fx-font-size: 18px;" text="📊" />
                     </StackPane>
@@ -54,28 +59,32 @@
                 
                 <Label style="-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 5 10;" text="QUẢN LÝ" />
                 
-                <HBox fx:id="btnDoiBong" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" styleClass="sidebar-button">
+                <HBox fx:id="btnDoiBong" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" 
+                      styleClass="sidebar-button">
                     <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 8;">
                         <Label style="-fx-font-size: 18px;" text="👥" />
                     </StackPane>
                     <Label style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 500;" text="Đội bóng" />
                 </HBox>
                 
-                <HBox fx:id="btnCauThu" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" styleClass="sidebar-button">
+                <HBox fx:id="btnCauThu" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" 
+                      styleClass="sidebar-button">
                     <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 8;">
                         <Label style="-fx-font-size: 18px;" text="⚽" />
                     </StackPane>
                     <Label style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 500;" text="Cầu thủ" />
                 </HBox>
                 
-                <HBox fx:id="btnTranDau" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" styleClass="sidebar-button">
+                <HBox fx:id="btnTranDau" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" 
+                      styleClass="sidebar-button">
                     <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 8;">
                         <Label style="-fx-font-size: 18px;" text="🏟" />
                     </StackPane>
                     <Label style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 500;" text="Trận đấu" />
                 </HBox>
                 
-                <HBox fx:id="btnQuery" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" styleClass="sidebar-button">
+                <HBox fx:id="btnQuery" alignment="CENTER_LEFT" spacing="12" style="-fx-cursor: hand; -fx-padding: 14 15; -fx-background-radius: 10;" 
+                      styleClass="sidebar-button">
                     <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 8;">
                         <Label style="-fx-font-size: 18px;" text="🔍" />
                     </StackPane>
@@ -97,7 +106,8 @@
                 </VBox>
             </VBox>
             
-            <ScrollPane fx:id="contentArea" styleClass="content-area" fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" style="-fx-background: #f5f7fa; -fx-background-color: #f5f7fa;" HBox.hgrow="ALWAYS">
+            <ScrollPane fx:id="contentArea" styleClass="content-area" fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" 
+                        style="-fx-background: #f5f7fa; -fx-background-color: #f5f7fa;" HBox.hgrow="ALWAYS">
                 
                 <content>
                     <VBox alignment="CENTER" spacing="20">

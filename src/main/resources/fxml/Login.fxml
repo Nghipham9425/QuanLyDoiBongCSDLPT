@@ -95,7 +95,7 @@
             <!-- Footer Info -->
             <VBox alignment="CENTER" spacing="5" style="-fx-padding: 20 0 0 0;">
                 <Label text="Tài khoản mặc định:" style="-fx-text-fill: #999; -fx-font-size: 11px;"/>
-                <Label text="admin / admin" style="-fx-text-fill: #666; -fx-font-size: 10px; -fx-font-family: monospace;"/>
+                <Label text="sa / 123456" style="-fx-text-fill: #666; -fx-font-size: 10px; -fx-font-family: monospace;"/>
             </VBox>
         </VBox>
         

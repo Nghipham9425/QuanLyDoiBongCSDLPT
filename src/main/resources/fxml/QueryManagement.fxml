@@ -15,14 +15,16 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="25" styleClass="page-container" stylesheets="@../styles/common.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.football.controllers.QueryController">
+<VBox spacing="25" styleClass="page-container" stylesheets="@../styles/common.css" 
+      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.football.controllers.QueryController">
     <padding>
         <Insets bottom="20" left="25" right="25" top="20" />
     </padding>
     
     <!-- HEADER -->
     <HBox alignment="CENTER_LEFT" spacing="15">
-        <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 28; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.5), 15, 0.5, 0, 4);">
+        <StackPane prefHeight="55" prefWidth="55" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+        -fx-background-radius: 28; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.5), 15, 0.5, 0, 4);">
             <Label style="-fx-font-size: 28px;" text="📊" />
         </StackPane>
         
@@ -41,9 +43,11 @@
             </columnConstraints>
             
             <!-- Query 1 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; 
+            -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" GridPane.rowIndex="0">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="1" />
                     </StackPane>
                     <Label styleClass="section-title" text="Tìm cầu thủ theo CLB" />
@@ -64,9 +68,11 @@
             </VBox>
             
             <!-- Query 2 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;
+                " GridPane.columnIndex="1" GridPane.rowIndex="0">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="2" />
                     </StackPane>
                     <Label styleClass="section-title" text="Đếm số trận của cầu thủ" />
@@ -83,9 +89,11 @@
             </VBox>
             
             <!-- Query 3 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" 
+                  GridPane.rowIndex="1">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                    -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="3" />
                     </StackPane>
                     <Label styleClass="section-title" text="Số trận hòa theo sân" />
@@ -102,9 +110,11 @@
             </VBox>
             
             <!-- Query 4 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" 
+                  GridPane.rowIndex="1">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                        -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="4" />
                     </StackPane>
                     <Label styleClass="section-title" text="Vua phá lưới" />
@@ -122,9 +132,11 @@
             </VBox>
             
             <!-- Query 5 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" 
+                    GridPane.columnIndex="0" GridPane.rowIndex="2">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                    -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="5" />
                     </StackPane>
                     <Label styleClass="section-title" text="Trận đấu theo CT và TT" />
@@ -147,9 +159,11 @@
             </VBox>
             
             <!-- Query 6 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" 
+                    GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="6" />
                     </StackPane>
                     <Label styleClass="section-title" text="2 CT cùng CLB?" />
@@ -167,9 +181,11 @@
             </VBox>
             
             <!-- Query 7 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" 
+                  GridPane.rowIndex="3">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                    -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="7" />
                     </StackPane>
                     <Label styleClass="section-title" text="CT ghi 0 bàn" />
@@ -187,9 +203,11 @@
             </VBox>
             
             <!-- Query 8 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" 
+                    GridPane.rowIndex="3">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                            -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="8" />
                     </StackPane>
                     <Label styleClass="section-title" text="CT tham gia ≥3 trận" />
@@ -207,9 +225,11 @@
             </VBox>
             
             <!-- Query 9 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="0" 
+                    GridPane.rowIndex="4">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                        -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="9" />
                     </StackPane>
                     <Label styleClass="section-title" text="Tổng bàn thắng đội" />
@@ -226,9 +246,11 @@
             </VBox>
             
             <!-- Query 10 -->
-            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <VBox spacing="15" styleClass="card" style="-fx-border-color: #ffcdd2; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="1" 
+                    GridPane.rowIndex="4">
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
+                    <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: linear-gradient(to bottom, #ef5350, #ff8a80); 
+                -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(239,83,80,0.4), 8, 0.5, 0, 2);">
                         <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="10" />
                     </StackPane>
                     <Label styleClass="section-title" text="CT chưa thi đấu" />

@@ -69,14 +69,8 @@ public class TranDauController {
         rbSD2.setVisible(true);
         rbSD2.setManaged(true);
         
-        // Mặc định chọn sân tương ứng với branch (KHÔNG chọn "Tất cả")
-        if (isClb1) {
-            // Mặc định xem chỉ SD1
-            rbSD1.setSelected(true);
-        } else {
-            // Mặc định xem chỉ SD2
-            rbSD2.setSelected(true);
-        }
+        // Mặc định chọn "Tất cả"
+        rbAll.setSelected(true);
         
         // Setup table columns
         colMaTD.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMaTD()));

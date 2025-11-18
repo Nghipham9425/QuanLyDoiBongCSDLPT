@@ -17,13 +17,15 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="800" spacing="25" styleClass="page-container" stylesheets="@../styles/common.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.football.controllers.CauThuController">
+<VBox minHeight="800" spacing="25" styleClass="page-container" stylesheets="@../styles/common.css" 
+      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.football.controllers.CauThuController">
     <padding>
         <Insets bottom="20" left="25" right="25" top="20" />
     </padding>
 
     <HBox alignment="CENTER_LEFT" spacing="15">
-        <StackPane prefHeight="50" prefWidth="50" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #66bb6a 0%, #81c784 100%); -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(102,187,106,0.4), 10, 0.4, 0, 3);">
+        <StackPane prefHeight="50" prefWidth="50" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #66bb6a 0%, #81c784 100%); 
+-fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(102,187,106,0.4), 10, 0.4, 0, 3);">
             <Label style="-fx-font-size: 28px;" text="⚽" />
         </StackPane>
         
@@ -34,7 +36,8 @@
         
         <Region HBox.hgrow="ALWAYS" />
         
-        <StackPane onMouseClicked="#handleLamMoi" prefHeight="45" prefWidth="45" style="-fx-background-color: #80cbc4; -fx-background-radius: 22.5; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(128,203,196,0.4), 10, 0.4, 0, 3);">
+        <StackPane onMouseClicked="#handleLamMoi" prefHeight="45" prefWidth="45" style="-fx-background-color: #80cbc4; 
+        -fx-background-radius: 22.5; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(128,203,196,0.4), 10, 0.4, 0, 3);">
             <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="🔄" />
         </StackPane>
     </HBox>
@@ -96,7 +99,7 @@
             <Region HBox.hgrow="ALWAYS" />
             
             <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="🗄Hiển thị:" />
-            <RadioButton fx:id="rbAll" style="-fx-font-size: 12px;" text="Tất cả">
+            <RadioButton fx:id="rbAll" selected="true" style="-fx-font-size: 12px;" text="Tất cả">
                 <toggleGroup>
                     <ToggleGroup fx:id="filterGroup" />
                 </toggleGroup>
