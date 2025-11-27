@@ -9,8 +9,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx/21" 
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.football.controllers.LoginController"
-            prefWidth="800" prefHeight="500"
-            stylesheets="@../styles/login.css">
+            prefWidth="800" prefHeight="500" stylesheets="@../styles/login.css">
     
     <HBox prefHeight="500" prefWidth="800" 
           AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 

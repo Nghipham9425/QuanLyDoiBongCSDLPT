@@ -98,9 +98,57 @@ public class CauThuDAO {
     // Cập nhật cầu thủ (có thể di chuyển giữa 2 mảnh)
     public boolean update(CauThu cauthu, String oldCLB, String newCLB) throws SQLException {
         if (!oldCLB.equals(newCLB)) {
-            // Đổi CLB → xóa DB cũ, insert DB mới
+            // Đổi CLB → copy cầu thủ sang DB mới
+            Connection oldConn = oldCLB.equals("CLB1") 
+                ? DatabaseConnection.getConnection1() 
+                : DatabaseConnection.getConnection2();
+            
+            Connection newConn = newCLB.equals("CLB1")
+                ? DatabaseConnection.getConnection1()
+                : DatabaseConnection.getConnection2();
+            
+            // BƯỚC 0: Kiểm tra có ThamGia tham chiếu đến cầu thủ này ở DB cũ không
+            // Nếu có → KHÔNG CHO CHUYỂN (vì sẽ tạo duplicate hoặc mất FK)
+            String checkThamGia = "SELECT COUNT(*) FROM ThamGia WHERE MaCT = ?";
+            try (PreparedStatement psCheck = oldConn.prepareStatement(checkThamGia)) {
+                psCheck.setString(1, cauthu.getMaCT());
+                ResultSet rs = psCheck.executeQuery();
+                if (rs.next() && rs.getInt(1) > 0) {
+                    throw new SQLException("Không thể chuyển cầu thủ! Có " + rs.getInt(1) + 
+                        " bản ghi ThamGia tham chiếu đến cầu thủ này. " +
+                        "Vui lòng xóa dữ liệu ThamGia trước khi chuyển.");
+                }
+            }
+            
+            // BƯỚC 1: Kiểm tra và xử lý ở DB mới
+            boolean cauThuExistsInNew = checkCauThuExists(cauthu.getMaCT(), newConn);
+            
+            if (cauThuExistsInNew) {
+                // Đã tồn tại → UPDATE
+                String updatePlayer = "UPDATE CauThu SET HoTen = ?, ViTri = ?, MaDB = ? WHERE MaCT = ?";
+                try (PreparedStatement psUpdate = newConn.prepareStatement(updatePlayer)) {
+                    psUpdate.setString(1, cauthu.getHoTen());
+                    psUpdate.setString(2, cauthu.getViTri());
+                    psUpdate.setString(3, cauthu.getMaDB());
+                    psUpdate.setString(4, cauthu.getMaCT());
+                    psUpdate.executeUpdate();
+                }
+            } else {
+                // Chưa tồn tại → INSERT
+                String insertPlayer = "INSERT INTO CauThu (MaCT, HoTen, ViTri, MaDB) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement psInsert = newConn.prepareStatement(insertPlayer)) {
+                    psInsert.setString(1, cauthu.getMaCT());
+                    psInsert.setString(2, cauthu.getHoTen());
+                    psInsert.setString(3, cauthu.getViTri());
+                    psInsert.setString(4, cauthu.getMaDB());
+                    psInsert.executeUpdate();
+                }
+            }
+            
+            // BƯỚC 2: Xóa cầu thủ ở DB cũ (đã kiểm tra không có ThamGia)
             delete(cauthu.getMaCT(), oldCLB);
-            return insert(cauthu, newCLB);
+            
+            return true;
         } else {
             // Cùng CLB → update bình thường
             Connection conn = oldCLB.equals("CLB1") 
@@ -115,6 +163,16 @@ public class CauThuDAO {
                 ps.setString(4, cauthu.getMaCT());
                 return ps.executeUpdate() > 0;
             }
+        }
+    }
+    
+    // Helper: Kiểm tra CauThu tồn tại trong DB
+    private boolean checkCauThuExists(String maCT, Connection conn) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM CauThu WHERE MaCT = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, maCT);
+            ResultSet rs = ps.executeQuery();
+            return rs.next() && rs.getInt(1) > 0;
         }
     }
     

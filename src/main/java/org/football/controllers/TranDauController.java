@@ -458,6 +458,25 @@ public class TranDauController {
         }
         
         try {
+            // ⚠️ VALIDATION: Kiểm tra đội bóng có tồn tại không
+            boolean team1Exists = doiBongService.checkExists(tran.getMaDB1());
+            boolean team2Exists = doiBongService.checkExists(tran.getMaDB2());
+            
+            if (!team1Exists || !team2Exists) {
+                StringBuilder msg = new StringBuilder("❌ Không thể nhập điểm vì đội bóng đã bị xóa:\n\n");
+                
+                if (!team1Exists) {
+                    msg.append("• Đội ").append(tran.getMaDB1()).append(" không tồn tại\n");
+                }
+                if (!team2Exists) {
+                    msg.append("• Đội ").append(tran.getMaDB2()).append(" không tồn tại\n");
+                }
+                
+                msg.append("\n💡 Vui lòng xóa trận đấu này hoặc cập nhật lại đội bóng.");
+                AlertUtils.showError(msg.toString());
+                return;
+            }
+            
             // Open DiemSoDialog với FXML
             DiemSoDialogController.show(tran);
             
@@ -467,7 +486,7 @@ public class TranDauController {
             else loadData(2);
             
         } catch (Exception e) {
-            AlertUtils.showError(" Lỗi mở dialog: " + e.getMessage());
+            AlertUtils.showError("❌ Lỗi mở dialog: " + e.getMessage());
             e.printStackTrace();
         }
     }

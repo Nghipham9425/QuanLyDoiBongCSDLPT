@@ -11,7 +11,6 @@ import java.util.List;
 public class DoiBongService {
     private DoiBongDAO dao = new DoiBongDAO();
 
-    // ==================== INSERT ====================
     public void insert(DoiBong doiBong, String clb) throws Exception {
         // Validation: Dữ liệu không null
         if (doiBong == null) {
@@ -49,7 +48,6 @@ public class DoiBongService {
         }
     }
 
-    // ==================== UPDATE ====================
     public void update(DoiBong doiBong, String oldCLB, String newCLB) throws Exception {
         // Validation: Dữ liệu không null
         if (doiBong == null) {
@@ -74,7 +72,6 @@ public class DoiBongService {
         }
     }
 
-    // ==================== DELETE ====================
     public void delete(String maDB, String clb) throws Exception {
         // Validation: Đội phải tồn tại
         if (dao.findById(maDB) == null) {
@@ -86,7 +83,6 @@ public class DoiBongService {
         }
     }
 
-    // ==================== QUERY ====================
     public DoiBong findById(String maDB) throws SQLException {
         return dao.findById(maDB);
     }
@@ -104,5 +100,10 @@ public class DoiBongService {
     
     public List<DoiBong> searchByName(String tenDB) throws SQLException {
         return dao.searchByName(tenDB);
+    }
+    
+    // Kiểm tra đội bóng có tồn tại không (dùng cho validation)
+    public boolean checkExists(String maDB) throws SQLException {
+        return dao.findById(maDB) != null;
     }
 }

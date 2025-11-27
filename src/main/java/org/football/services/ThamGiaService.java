@@ -5,9 +5,10 @@ import org.football.models.ThamGia;
 import org.football.utils.DatabaseConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ArrayList;
 
 public class ThamGiaService {
     private ThamGiaDAO dao = new ThamGiaDAO();
@@ -20,69 +21,92 @@ public class ThamGiaService {
         return dao.findByMaTD(maTD, conn);
     }
     
-    // Save/Update participation (called from DiemSoDialog)
-    // FIXED: Handle cross-CLB matches - save to both DBs based on player's team
+    
     public void saveParticipation(String maTD, String sanDau, List<ThamGia> records) throws Exception {
-        Connection conn1 = DatabaseConnection.getConnection1();
-        Connection conn2 = DatabaseConnection.getConnection2();
+        // Target DB dựa trên SanDau của trận đấu
+        Connection targetConn = sanDau.equals("SD1") 
+            ? DatabaseConnection.getConnection1() 
+            : DatabaseConnection.getConnection2();
         
-        // Delete old records from BOTH databases
-        dao.deleteByMaTD(maTD, conn1);
-        dao.deleteByMaTD(maTD, conn2);
+        Connection otherConn = sanDau.equals("SD1")
+            ? DatabaseConnection.getConnection2()
+            : DatabaseConnection.getConnection1();
         
-        // Separate records by player's CLB
-        List<ThamGia> recordsForDB1 = new ArrayList<>();
-        List<ThamGia> recordsForDB2 = new ArrayList<>();
+        // Delete old records from target DB only
+        dao.deleteByMaTD(maTD, targetConn);
         
+        // Insert all ThamGia to target DB (where TranDau is)
         for (ThamGia tg : records) {
-            // Check which DB has this player by trying to find in DB1 first
-            String sqlCheck = "SELECT MaCT FROM CauThu WHERE MaCT = ?";
-            boolean foundInDB1 = false;
-            boolean foundInDB2 = false;
+            // Đảm bảo CauThu tồn tại trong target DB
+            ensureCauThuExists(tg.getMaCT(), targetConn, otherConn);
             
-            try (java.sql.PreparedStatement stmt = conn1.prepareStatement(sqlCheck)) {
-                stmt.setString(1, tg.getMaCT());
-                java.sql.ResultSet rs = stmt.executeQuery();
-                if (rs.next()) {
-                    foundInDB1 = true;
-                }
-            } catch (SQLException e) {
-                // Ignore
+            if (!dao.insert(tg, targetConn)) {
+                throw new Exception("Lỗi lưu dữ liệu tham gia cho cầu thủ " + tg.getMaCT());
             }
-            
-            if (!foundInDB1) {
-                try (java.sql.PreparedStatement stmt = conn2.prepareStatement(sqlCheck)) {
-                    stmt.setString(1, tg.getMaCT());
-                    java.sql.ResultSet rs = stmt.executeQuery();
-                    if (rs.next()) {
-                        foundInDB2 = true;
-                    }
-                } catch (SQLException e) {
-                    // Ignore
-                }
-            }
-            
-            if (foundInDB1) {
-                recordsForDB1.add(tg);
-            } else if (foundInDB2) {
-                recordsForDB2.add(tg);
-            } else {
-                throw new Exception("Cầu thủ " + tg.getMaCT() + " không tồn tại trong hệ thống!");
+        }
+    }
+    
+    /**
+     * Đảm bảo CauThu tồn tại trong DB đích
+     * Nếu chưa có → sao chép từ DB nguồn
+     */
+    private void ensureCauThuExists(String maCT, Connection targetConn, Connection sourceConn) throws SQLException {
+        // Kiểm tra CauThu đã tồn tại trong target chưa
+        String checkSql = "SELECT COUNT(*) FROM CauThu WHERE MaCT = ?";
+        try (PreparedStatement psCheck = targetConn.prepareStatement(checkSql)) {
+            psCheck.setString(1, maCT);
+            ResultSet rs = psCheck.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                return; // Đã tồn tại
             }
         }
         
-        // Insert to DB1
-        for (ThamGia tg : recordsForDB1) {
-            if (!dao.insert(tg, conn1)) {
-                throw new Exception("Lỗi lưu dữ liệu tham gia vào DB1!");
+        // Chưa tồn tại → Lấy thông tin từ source và copy sang target
+        String selectSql = "SELECT CT.*, DB.TenDB, DB.CLB FROM CauThu CT " +
+                          "JOIN DoiBong DB ON CT.MaDB = DB.MaDB WHERE CT.MaCT = ?";
+        try (PreparedStatement psSelect = sourceConn.prepareStatement(selectSql)) {
+            psSelect.setString(1, maCT);
+            ResultSet rs = psSelect.executeQuery();
+            
+            if (rs.next()) {
+                String maDB = rs.getString("MaDB");
+                
+                // Đảm bảo DoiBong tồn tại trong target trước
+                ensureDoiBongExists(maDB, rs.getString("TenDB"), rs.getString("CLB"), targetConn);
+                
+                // Copy CauThu sang target
+                String insertSql = "INSERT INTO CauThu (MaCT, HoTen, ViTri, MaDB) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement psInsert = targetConn.prepareStatement(insertSql)) {
+                    psInsert.setString(1, maCT);
+                    psInsert.setString(2, rs.getString("HoTen"));
+                    psInsert.setString(3, rs.getString("ViTri"));
+                    psInsert.setString(4, maDB);
+                    psInsert.executeUpdate();
+                }
+            }
+        }
+    }
+    
+    /**
+     * Đảm bảo DoiBong tồn tại trong DB đích
+     */
+    private void ensureDoiBongExists(String maDB, String tenDB, String clb, Connection targetConn) throws SQLException {
+        String checkSql = "SELECT COUNT(*) FROM DoiBong WHERE MaDB = ?";
+        try (PreparedStatement psCheck = targetConn.prepareStatement(checkSql)) {
+            psCheck.setString(1, maDB);
+            ResultSet rs = psCheck.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                return; // Đã tồn tại
             }
         }
         
-        // Insert to DB2
-        for (ThamGia tg : recordsForDB2) {
-            if (!dao.insert(tg, conn2)) {
-                throw new Exception("Lỗi lưu dữ liệu tham gia vào DB2!");
-            }
+        // Chưa tồn tại → Insert
+        String insertSql = "INSERT INTO DoiBong (MaDB, TenDB, CLB) VALUES (?, ?, ?)";
+        try (PreparedStatement psInsert = targetConn.prepareStatement(insertSql)) {
+            psInsert.setString(1, maDB);
+            psInsert.setString(2, tenDB);
+            psInsert.setString(3, clb);
+            psInsert.executeUpdate();
         }
     }
     

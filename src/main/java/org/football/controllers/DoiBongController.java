@@ -49,10 +49,11 @@ public class DoiBongController {
         String selectedCLB = LoginController.getSelectedCLB();
         boolean isClb1 = selectedCLB.contains("CLB1");
         
-        // ComboBox CLB: chỉ hiển thị branch hiện tại
-        String currentBranch = isClb1 ? "CLB1" : "CLB2";
-        cbCLB.setItems(FXCollections.observableArrayList(currentBranch));
-        cbCLB.getSelectionModel().selectFirst();
+        // ✅ ComboBox CLB: Hiển thị CẢ 2 để cho phép chuyển mảnh
+        cbCLB.setItems(FXCollections.observableArrayList("CLB1", "CLB2"));
+        
+        // Mặc định chọn branch hiện tại
+        cbCLB.setValue(isClb1 ? "CLB1" : "CLB2");
         
         // Toán tử 3 ngôi: hiển thị/ẩn RadioButton tương ứng
         rbAll.setVisible(true);

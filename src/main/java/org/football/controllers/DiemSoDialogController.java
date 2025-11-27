@@ -254,18 +254,23 @@ public class DiemSoDialogController {
             }
             
             if (records.isEmpty()) {
-                AlertUtils.showError(" Chưa chọn cầu thủ nào tham gia!");
-                return;
+                boolean confirm = AlertUtils.showConfirm(
+                    "Xác nhận xóa dữ liệu",
+                        "Bạn chưa chọn cầu thủ nào tham gia",
+                    "Điều này sẽ XÓA TẤT CẢ dữ liệu tham gia của trận đấu này.\n" +
+                    "Bạn có chắc chắn muốn xóa?"
+                );
+                if (!confirm) return;
             }
             
-            // Lưu vào database
+            // Lưu vào database (nếu records rỗng → xóa hết ThamGia)
             thamGiaService.saveParticipation(tran.getMaTD(), tran.getSanDau(), records);
             
-            AlertUtils.showInfo(
-                " Đã lưu kết quả trận đấu!\n" +
-                lblTyso.getText() + "\n" +
-                "Số cầu thủ tham gia: " + records.size()
-            );
+            String message = records.isEmpty() 
+                ? " Đã xóa tất cả dữ liệu tham gia của trận đấu!"
+                : " Đã lưu kết quả trận đấu!\n" + lblTyso.getText() + "\nSố cầu thủ tham gia: " + records.size();
+            
+            AlertUtils.showInfo(message);
             
             stage.close();
             
